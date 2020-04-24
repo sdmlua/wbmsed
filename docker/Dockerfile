@@ -7,7 +7,8 @@ RUN yum update -y \
     && yum clean metadata -y \
     && git clone --depth 1 https://github.com/sdmlua/wbmsed.git \
     && cd wbmsed/Model \
-    && make
+    && make \
+    && mkdir ../domain
 
 WORKDIR /wbmsed
 
