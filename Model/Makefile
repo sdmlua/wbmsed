@@ -1,25 +1,20 @@
-libURL="http://ob.sr.unh.edu/svn/WSAG/branches/Balazs/snapshots/2009-12-18 NASA-IDS"
-mdlURL="http://ob.sr.unh.edu/svn/WSAG/branches/Balazs/snapshots/2009-12-18 NASA-IDS"
+.PHONY: all
 
-all: CMlib_target MFlib_target WBMplus_target
+all: _CMlib _MFlib _WBMplus
 
-CMlib_target:   CMlib
-	svn update CMlib
-	make -C CMlib all
+_CMlib:
+        $(MAKE) -C CMlib all
 
-MFlib_target:   MFlib
-	svn update MFlib
-	make -C MFlib all
+_MFlib:
+        $(MAKE) -C MFlib all
 
-WBMplus_target: WBMplus
-	svn update WBMplus
-	make -C WBMplus all
+_WBMplus:
+        $(MAKE) -C WBMplus all
 
-CMlib:
-	svn checkout $(libURL)/CMlib
+LIBS = CMlib MFlib WBMplus
+.PHONY: clean $(LIBS)
+$(LIBS):
+        $(MAKE) -C $@ clean
 
-MFlib:
-	svn checkout $(libURL)/MFlib
+clean: $(LIBS)
 
-WBMplus:
-	svn checkout $(mdlURL)/WBMplus
