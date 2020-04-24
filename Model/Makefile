@@ -3,18 +3,18 @@
 all: _CMlib _MFlib _WBMplus
 
 _CMlib:
-        $(MAKE) -C CMlib all
+	$(MAKE) -C CMlib all
 
 _MFlib:
-        $(MAKE) -C MFlib all
+	$(MAKE) -C MFlib all
 
 _WBMplus:
-        $(MAKE) -C WBMplus all
+	$(MAKE) -C WBMplus all
 
 LIBS = CMlib MFlib WBMplus
 .PHONY: clean $(LIBS)
 $(LIBS):
-        $(MAKE) -C $@ clean
+	$(MAKE) -C $@ clean
 
 clean: $(LIBS)
 
